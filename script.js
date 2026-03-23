@@ -1,6 +1,29 @@
 // ─── CONFIG ───────────────────────────────────────────────
-    const FORMSPREE_ID = "mzdjpdpb"; // Replace with your Formspree form ID
+    const FORMSPREE_ID = "mzdjpdpb";
     // ──────────────────────────────────────────────────────────
+
+    // ─── THEME TOGGLE ─────────────────────────────────────────
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon   = themeToggle.querySelector('.theme-icon');
+
+ function applyTheme(mode) {
+  if (mode === 'light') {
+    document.documentElement.classList.add('light');
+    themeIcon.innerHTML = '<img src="dark-mode.png" width="20" height="20" alt="Switch to dark mode" />';
+  } else {
+    document.documentElement.classList.remove('light');
+    themeIcon.innerHTML = '<img src="light-mode.png" width="40" height="40" alt="Switch to light mode" />';
+  }
+  localStorage.setItem('gg-theme', mode);
+}
+
+    // Load saved preference, default dark
+    applyTheme(localStorage.getItem('gg-theme') || 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.contains('light');
+      applyTheme(isLight ? 'dark' : 'light');
+    });
 
     // ─── MOBILE MENU ──────────────────────────────────────────
     const hamburger   = document.getElementById('hamburger');
