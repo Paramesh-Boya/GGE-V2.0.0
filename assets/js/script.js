@@ -28,13 +28,12 @@
     // ─── MOBILE MENU ──────────────────────────────────────────
     const hamburger   = document.getElementById('hamburger');
     const mobileMenu  = document.getElementById('mobile-menu');
-    const closeBtn    = document.getElementById('mobile-menu-close');
 
     function openMobileMenu() {
       mobileMenu.classList.add('open');
       hamburger.classList.add('open');
       hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden'; // prevent background scroll
+      document.body.style.overflow = 'hidden';
     }
 
     function closeMobileMenu() {
@@ -47,8 +46,6 @@
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
     });
-
-    closeBtn.addEventListener('click', closeMobileMenu);
 
     // Close on ESC key
     document.addEventListener('keydown', (e) => {
